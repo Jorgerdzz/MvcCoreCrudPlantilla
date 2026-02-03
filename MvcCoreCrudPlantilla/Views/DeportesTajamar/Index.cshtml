@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<Usuario>
+
+<h1>Usuarios Deportes Tajamar</h1>
+
+@if(Model != null){
+    <table class="table table-info table-bordered">
+        <thead>
+            <tr>
+                <th>ID USUARIO</th>
+                <th>NOMBRE</th>
+                <th>APELLIDOS</th>
+                <th>EMAIL</th>
+                <th>ID CURSO</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Usuario user in Model)
+            {
+                <tr>
+                    <td>@user.IdUsuario</td>
+                    <td>@user.Nombre</td>
+                    <td>@user.Apellidos</td>
+                    <td>@user.Email</td>
+                    <td>@user.IdCurso</td>
+                    <td>
+                        <a class="btn btn-success" asp-controller="DeportesTajamar" asp-action="DatosUsuario" asp-route-id="@user.IdUsuario">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
