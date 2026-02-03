@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+@model ResumenPlantilla
+
+<h1>Buscador plantilla por funcion</h1>
+
+<form method="post">
+    <label>Seleccione funcion</label>
+    <select name="funcion" class="form-control">
+        @foreach(string funcion in ViewData["FUNCIONES"] as List<string>)
+            {
+               <option>@funcion</option> 
+            }
+    </select>
+    <button class="btn btn-primary">Buscar plantilla</button>
+</form>
+
+@if (Model != null)
+{
+    <table class="table table-info table-bordered">
+        <thead>
+            <tr>
+                <th>ID EMPLEADO</th>
+                <th>APELLIDO</th>
+                <th>FUNCION</th>
+                <th>SALARIO</th>
+                <th>HOSPITAL</th>
+                <th>SALA</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Plantilla plantilla in Model.Empleados)
+            {
+                <tr>
+                    <td>@plantilla.IdEmpleado</td>
+                    <td>@plantilla.Apellido</td>
+                    <td>@plantilla.Funcion</td>
+                    <td>@plantilla.Salario €</td>
+                    <td>@plantilla.IdHospital</td>
+                    <td>@plantilla.IdSala</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            Salario maximo: @Model.MaximoSalario
+        </li>
+        <li class="list-group-item">
+            Suma salarial: @Model.SumaSalarial
+        </li>
+        <li class="list-group-item">
+            Media salarial: @Model.MediaSalarial
+        </li>
+    </ul>
+
+}

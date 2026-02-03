@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<Plantilla>
+
+<h1>PLANTILLA EN NÓMINA</h1>
+
+@if(Model != null)
+{
+    <table class="table table-info table-bordered">
+        <thead>
+            <tr>
+                <th>APELLIDO</th>
+                <th>FUNCION</th>
+                <th>SALARIO</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Plantilla plantilla in Model)
+            {
+                <tr>
+                    <td>@plantilla.Apellido</td>
+                    <td>@plantilla.Funcion</td>
+                    <td>@plantilla.Salario €</td>
+                    <td>
+                        <a class="btn btn-success" asp-asp-controller="Plantilla" asp-action="Details" asp-route-id="@plantilla.IdEmpleado">Details</a>
+                        <a class="btn btn-warning" asp-asp-controller="Plantilla" asp-action="Update" asp-route-id="@plantilla.IdEmpleado">Update</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
