@@ -178,5 +178,17 @@ namespace MvcCoreCrudPlantilla.Repositories
             this.com.Parameters.Clear();
         }
 
+        public async Task DeleteEmpleado(int idEmpleado)
+        {
+            string sql = "delete from PLANTILLA where EMPLEADO_NO = @idEmpleado";
+            this.com.Parameters.AddWithValue("@idEmpleado", idEmpleado);
+            this.com.CommandType = CommandType.Text;
+            this.com.CommandText = sql;
+            await this.cn.OpenAsync();
+            await this.com.ExecuteNonQueryAsync();
+            await this.cn.CloseAsync();
+            this.com.Parameters.Clear();
+        }
+
     }
 }

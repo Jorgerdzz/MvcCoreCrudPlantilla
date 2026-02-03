@@ -65,5 +65,11 @@ namespace MvcCoreCrudPlantilla.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Delete(int id)
+        {
+            await this.repo.DeleteEmpleado(id);
+            return RedirectToAction("Index");
+        }
+
     }
 }
